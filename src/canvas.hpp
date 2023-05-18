@@ -1,0 +1,8 @@
+//
+// Created by Gabriele.Pappalardo on 18.05.23.
+//
+
+#ifndef RAYTRACERCHALLENGE_CANVAS_HPP
+#define RAYTRACERCHALLENGE_CANVAS_HPP
+
+#endif //RAYTRACERCHALLENGE_CANVAS_HPP

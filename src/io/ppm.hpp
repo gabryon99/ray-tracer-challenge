@@ -1,0 +1,8 @@
+//
+// Created by Gabriele.Pappalardo on 18.05.23.
+//
+
+#ifndef RAYTRACERCHALLENGE_PPM_HPP
+#define RAYTRACERCHALLENGE_PPM_HPP
+
+#endif //RAYTRACERCHALLENGE_PPM_HPP
