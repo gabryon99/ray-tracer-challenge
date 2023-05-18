@@ -29,7 +29,7 @@ Projectile tick(const Environment& env, const Projectile& proj) {
 
 TEST_CASE("Draw a Square") {
 
-    Canvas canvas(500, 500);
+    Canvas canvas(600, 500);
 
     Point startingPoint = point(100, 100, 0);
     for (size_t i = 0; i < 300; i++) {
@@ -49,7 +49,7 @@ TEST_CASE("Draw a Square") {
 
 TEST_CASE("Projectile and Environment") {
 
-    Canvas canvas(400, 400);
+    Canvas canvas(900, 400);
 
     // Projectile starts one unit above the origin.
     // Velocity is normalized to 1 unit/tick.

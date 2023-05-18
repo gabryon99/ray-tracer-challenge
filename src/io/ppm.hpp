@@ -52,8 +52,8 @@ namespace io {
 
         friend std::ostream &operator<<(std::ostream &os, const PPM &ppm) {
             os << ppm.header << "\n";
-            for (std::size_t i = 0; i < ppm.header.width; i += 1) {
-                for (std::size_t j = 0; j < ppm.header.height; j += 1) {
+            for (std::size_t i = 0; i < ppm.header.height; i += 1) {
+                for (std::size_t j = 0; j < ppm.header.width; j += 1) {
                     auto pixel = &ppm.data[j + i * ppm.header.width];
 
                     auto red = static_cast<int>(pixel->color.x * ppm.header.maximumColorValue);
