@@ -5,6 +5,8 @@
 #include <cstdio>
 
 constexpr float EPSILON = 1e-5;
+constexpr float PI = M_PI;
+constexpr float SQR_TWO = 1.4142135623730951;
 
 bool compareFloat(float x, float y) {
 #ifdef _DEBUG
@@ -12,5 +14,7 @@ bool compareFloat(float x, float y) {
 #endif
     return std::abs(x - y) <= EPSILON;
 }
+
+float radians(float deg) { return (deg / 180.0f) * M_PI; }
 
 #endif //RAYTRACERCHALLENGE_UTILITY_HPP

@@ -14,9 +14,9 @@ class Matrix {
 
 private:
     std::array<float, MATRIX_SIZE * MATRIX_SIZE> data{0};
-    size_t size = MATRIX_SIZE;
 public:
 
+    static constexpr size_t SIZE = MATRIX_SIZE;
     constexpr explicit Matrix() = default;
 
     constexpr Matrix(std::initializer_list<std::initializer_list<float>> values) {
@@ -38,7 +38,7 @@ public:
 
     static Matrix<MATRIX_SIZE> identity() {
         Matrix<MATRIX_SIZE> id;
-        for (size_t i = 0; i < id.size; i++) {
+        for (size_t i = 0; i < SIZE; i++) {
             id.set(i, i, 1.f);
         }
         return id;
@@ -52,7 +52,7 @@ public:
 
         float det = 0;
 
-        for (size_t col = 0; col < size; col++) {
+        for (size_t col = 0; col < SIZE; col++) {
             det += at(0, col) * cofactor(0, col).value();
         }
 
@@ -83,7 +83,7 @@ public:
 
     [[nodiscard]] std::optional<Matrix<MATRIX_SIZE - 1>> subMatrix(size_t row, size_t col) const {
 
-        if (row >= size || col >= size) {
+        if (row >= SIZE || col >= SIZE) {
             return {};
         }
 
@@ -91,10 +91,10 @@ public:
         size_t si = 0, sj = 0;
 
         // Remove row `row` and col `col`
-        for (size_t i = 0; i < size; i++) {
+        for (size_t i = 0; i < SIZE; i++) {
             if (i == row) continue;
             sj = 0;
-            for (size_t j = 0; j < size; j++) {
+            for (size_t j = 0; j < SIZE; j++) {
                 if (j == col) continue;
                 sub.set(si, sj, at(i, j));
                 sj++;
@@ -108,8 +108,8 @@ public:
     [[nodiscard]] Matrix<MATRIX_SIZE> transpose() const {
         Matrix<MATRIX_SIZE> transposed;
 
-        for (size_t i = 0; i < size; i++) {
-            for (size_t j = 0; j < size; j++) {
+        for (size_t i = 0; i < SIZE; i++) {
+            for (size_t j = 0; j < SIZE; j++) {
                 transposed.set(i, j, at(j, i));
             }
         }
@@ -124,8 +124,8 @@ public:
 
         Matrix<MATRIX_SIZE> inv;
 
-        for (size_t row = 0; row < size; row++) {
-            for (size_t col = 0; col < size; col++) {
+        for (size_t row = 0; row < SIZE; row++) {
+            for (size_t col = 0; col < SIZE; col++) {
                 auto c = cofactor(row, col).value();
                 inv.set(col, row, c / det);
             }
@@ -136,14 +136,12 @@ public:
 
     [[nodiscard]] float at(size_t x, size_t y) const { return data[x * MATRIX_SIZE + y]; }
 
-    [[nodiscard]] size_t matrixSize() const { return size; }
-
     void set(size_t x, size_t y, float value) {
         data[x * MATRIX_SIZE + y] = value;
     }
 
     bool operator==(const Matrix<MATRIX_SIZE> &rhs) const {
-        for (size_t i = 0; i < size; i++) {
+        for (size_t i = 0; i < SIZE; i++) {
             if (!compareFloat(data[i], rhs.data[i])) return false;
         }
         return true;
@@ -157,8 +155,8 @@ public:
 
         Matrix<MATRIX_SIZE> result;
 
-        for (size_t i = 0; i < size; i++) {
-            for (size_t j = 0; j < size; j++) {
+        for (size_t i = 0; i < SIZE; i++) {
+            for (size_t j = 0; j < SIZE; j++) {
                 result.set(i, j, -at(i, j));
             }
         }
@@ -170,8 +168,8 @@ public:
 
         Matrix<MATRIX_SIZE> result;
 
-        for (size_t i = 0; i < size; i++) {
-            for (size_t j = 0; j < size; j++) {
+        for (size_t i = 0; i < SIZE; i++) {
+            for (size_t j = 0; j < SIZE; j++) {
                 result.set(i, j, rhs.at(i, j) + at(i, j));
             }
         }
@@ -183,8 +181,8 @@ public:
 
         Matrix<MATRIX_SIZE> result;
 
-        for (size_t i = 0; i < size; i++) {
-            for (size_t j = 0; j < size; j++) {
+        for (size_t i = 0; i < SIZE; i++) {
+            for (size_t j = 0; j < SIZE; j++) {
                 result.set(i, j, rhs.at(i, j) - at(i, j));
             }
         }
@@ -195,9 +193,9 @@ public:
     Matrix<MATRIX_SIZE> operator*(const Matrix &rhs) const {
         Matrix<MATRIX_SIZE> result;
 
-        for (size_t i = 0; i < size; i++) {
-            for (size_t j = 0; j < size; j++) {
-                for (size_t k = 0; k < size; k++) {
+        for (size_t i = 0; i < SIZE; i++) {
+            for (size_t j = 0; j < SIZE; j++) {
+                for (size_t k = 0; k < SIZE; k++) {
                     float curr = result.at(i, j);
                     result.set(i, j, curr + at(i, k) * rhs.at(k, j));
                 }

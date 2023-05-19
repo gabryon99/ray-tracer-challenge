@@ -3,6 +3,7 @@
 
 #include "tuple.hpp"
 #include "canvas.hpp"
+#include "transformation.hpp"
 
 #include <fstream>
 #include <thread>
@@ -26,6 +27,19 @@ Projectile tick(const Environment& env, const Projectile& proj) {
     return {position, velocity};
 }
 
+TEST_CASE("Draw a clock") {
+
+    Canvas canvas(500, 500);
+
+    // Draw the clock *here*
+
+
+    std::ofstream outputFile;
+    outputFile.open("./clock.ppm", std::ofstream::out | std::ofstream::trunc);
+    outputFile << canvas.ppm();
+    outputFile.close();
+}
+
 TEST_CASE("Draw a Square") {
 
     Canvas canvas(600, 500);
@@ -36,7 +50,6 @@ TEST_CASE("Draw a Square") {
         canvas.writePixelAt(startingPoint.x, startingPoint.y + i, Pixel(Colors::RED));
         canvas.writePixelAt(startingPoint.x + 300, canvas.height - startingPoint.y - i, Pixel(Colors::RED));
         canvas.writePixelAt(startingPoint.x + i, startingPoint.y + 300, Pixel(Colors::RED));
-
     }
 
     std::ofstream outputFile;

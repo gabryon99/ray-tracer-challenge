@@ -18,6 +18,10 @@ add_executable(RayTracerChallenge_Test_Matrix matrix.cpp)
 target_compile_features(RayTracerChallenge_Test_Matrix PRIVATE cxx_std_17)
 target_link_libraries(RayTracerChallenge_Test_Matrix PRIVATE doctest::doctest)
 
+add_executable(RayTracerChallenge_Test_Transformation transformation.cpp)
+target_compile_features(RayTracerChallenge_Test_Transformation PRIVATE cxx_std_17)
+target_link_libraries(RayTracerChallenge_Test_Transformation PRIVATE doctest::doctest)
+
 add_executable(RayTracerChallenge_Test_Projectiles drawings.cpp)
 target_compile_features(RayTracerChallenge_Test_Projectiles PRIVATE cxx_std_17)
 target_link_libraries(RayTracerChallenge_Test_Projectiles PRIVATE doctest::doctest)
