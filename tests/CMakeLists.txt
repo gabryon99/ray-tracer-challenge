@@ -14,7 +14,11 @@ add_executable(RayTracerChallenge_Test_Tuple tuple.cpp)
 target_compile_features(RayTracerChallenge_Test_Tuple PRIVATE cxx_std_17)
 target_link_libraries(RayTracerChallenge_Test_Tuple PRIVATE doctest::doctest)
 
-add_executable(RayTracerChallenge_Test_Projectiles projectiles.cpp)
+add_executable(RayTracerChallenge_Test_Matrix matrix.cpp)
+target_compile_features(RayTracerChallenge_Test_Matrix PRIVATE cxx_std_17)
+target_link_libraries(RayTracerChallenge_Test_Matrix PRIVATE doctest::doctest)
+
+add_executable(RayTracerChallenge_Test_Projectiles drawings.cpp)
 target_compile_features(RayTracerChallenge_Test_Projectiles PRIVATE cxx_std_17)
 target_link_libraries(RayTracerChallenge_Test_Projectiles PRIVATE doctest::doctest)
 

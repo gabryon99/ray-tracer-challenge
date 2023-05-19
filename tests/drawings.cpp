@@ -6,7 +6,6 @@
 
 #include <fstream>
 #include <thread>
-#include <chrono>
 #include <iostream>
 
 struct Projectile {
